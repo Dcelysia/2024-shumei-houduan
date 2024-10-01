@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laterya.hearing.mapper.DataMapper">
+    <insert id="addData" >
+        insert into
+        data(time,mileage,type,UserId,location)
+        values (#{data.time},#{data.mileage},#{data.type},#{data.Id},#{data.location});
+    </insert>
+
+    <select id="selectById" resultType="com.laterya.hearing.model.pojo.Data">
+        select time,mileage,type,Id,DataId,username,location
+        from data,user
+        where data.UserId=#{id} and user.id=#{id}
+    </select>
+
+    <select id="selectAllById" resultType="com.laterya.hearing.model.pojo.Data">
+        select time,mileage,type,Id,DataId,username
+        from data,user
+        where data.UserId=#{id} and user.id=#{id}
+    </select>
+
+   <!-- <select id="loginById" resultType="Data">
+        select time,mileage,type,Id,DataId,username,password,location
+        from user,data
+        where data.UserId=#{id} and user.id=#{id}
+    </select>-->
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laterya.hearing.mapper.UserMapper">
+    <insert id="insertUser" parameterType="com.laterya.hearing.model.pojo.User">
+        insert into
+        user(username,password,sex)
+        values (#{username},#{password},#{sex})
+    </insert>
+    <select id="loginById" resultType="com.laterya.hearing.model.pojo.User">
+        select * from
+        user
+        where user.id=#{id}
+    </select>
+    <select id="selectId" resultType="String">
+        select id from
+        user
+        where user.username like #{username}
+    </select>
+    <select id="checkByAccount" resultType="com.laterya.hearing.model.pojo.User">
+        select * from
+        user
+        where username=#{username} and password=#{password}
+    </select>
+    <select id="selectFriendById" resultType="com.laterya.hearing.model.pojo.User">
+        select id,username,sex from
+        user
+        where id=#{id}
+    </select>
+    <select id="checkByName" resultType="String">
+        select * from
+        user
+        where username=#{username}
+    </select>
+    <update id="updatePsw">
+        update
+        user set password=#{new_Psw}
+        where
+        username=#{username} and password=#{password}
+    </update>
+    <update id="updateSex">
+        update
+            user set sex=#{new_Sex}
+        where
+            username=#{username} and password=#{password}
+    </update>
+    <update id="updateUsn">
+        update
+            user set username=#{new_Usn}
+        where
+            username=#{username} and password=#{password}
+    </update>
+
+</mapper>

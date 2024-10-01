@@ -1,0 +1,21 @@
+server:
+  port: 5240
+spring:
+  datasource:
+    username: small
+    password: 123456
+    url: jdbc:mysql://localhost:3306/small?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  redis:
+    port: 6379
+    password: redis
+    host: localhost
+    database: 4
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: false

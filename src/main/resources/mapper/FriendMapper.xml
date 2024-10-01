@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laterya.hearing.mapper.FriendMapper">
+    <insert id="request" parameterType="com.laterya.hearing.model.pojo.Friend">
+        insert into
+        friend(fromId,toId,message)
+        values(#{fromId},#{toId},"0")
+    </insert>
+    <select id="select" resultType="String">
+        select message from
+        friend
+        where friend.fromId=#{fromId} and friend.toId=#{toId}
+    </select>
+    <update id="agree" >
+        update friend
+        set message="1"
+        where friend.fromId=#{fromId} and friend.toId=#{toId}
+    </update>
+    <select id="friendList" resultType="com.laterya.hearing.model.pojo.Friend">
+        select * from
+        friend
+        where friend.toId=#{Id} and friend.message="1" or friend.fromId=#{Id} and friend.message="1"
+    </select>
+    <select id="requestList" resultType="com.laterya.hearing.model.pojo.Friend">
+        select * from
+        friend
+        where friend.toId=#{Id} and friend.message="0"
+    </select>
+    <delete id="reject" parameterType="com.laterya.hearing.model.pojo.Friend">
+        delete from
+        friend
+        where friend.fromId=#{fromId} and friend.toId=#{toId}
+    </delete>
+
+
+</mapper>

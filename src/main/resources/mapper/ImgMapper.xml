@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laterya.hearing.mapper.ImgMapper">
+    <insert id="insertImg">
+        insert into img(id,imgLocation)
+        values (#{id},#{imgLocation});
+    </insert>
+    <update id="updateImg">
+        update img set img.imgLocation=#{imgLocation} where img.id=#{id};
+    </update>
+    <select id="getImg" resultType="String">
+        select imgLocation from img where id=#{id};
+    </select>
+</mapper>
